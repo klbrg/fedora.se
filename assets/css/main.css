@@ -56,3 +56,5 @@ footer.site .wrap { padding-block: 1.5rem; }
 .term-head { color: var(--muted); }
 .term-head::before { content: "$ watch -n 1 date"; display: block; color: var(--accent); margin-bottom: .25rem; }
 .term-out { color: var(--fg); margin-top: .5rem; }
+.term-cmd { color: var(--accent); }
+.term-404 .term-out { margin-top: .25rem; overflow-wrap: anywhere; }

@@ -1,4 +1,18 @@
 {{ define "main" }}
 <h1>404</h1>
-<p><a href="/">Till startsidan</a></p>
+
+<div class="term term-404">
+  <div class="term-cmd">$ cat <span class="term-path">/sidan</span></div>
+  <div class="term-out">cat: <span class="term-path">/sidan</span>: Filen eller katalogen finns inte</div>
+</div>
+
+<p><a href="/">Till startsidan</a> · <a href="{{ site.Params.matrixUrl }}" rel="noopener">Till chatten på Matrix</a></p>
+<script>
+(function () {
+  var p = location.pathname;
+  if (!p || p === "/") return;
+  var els = document.querySelectorAll(".term-path");
+  for (var i = 0; i < els.length; i++) els[i].textContent = p;
+})();
+</script>
 {{ end }}

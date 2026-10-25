@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else }}{{ .Title }} – fedora.se{{ end }}</title>
+  <title>{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else if eq .Kind "404" }}404 – fedora.se{{ else }}{{ .Title }} – fedora.se{{ end }}</title>
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sv_SE">
   <meta property="og:site_name" content="fedora.se">
-  <meta property="og:title" content="{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else }}{{ .Title }} – fedora.se{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else if eq .Kind "404" }}404 – fedora.se{{ else }}{{ .Title }} – fedora.se{{ end }}">
   <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:image" content="{{ "og.png" | absURL }}">
