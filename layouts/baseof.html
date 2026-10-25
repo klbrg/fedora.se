@@ -34,8 +34,6 @@
   {{ end }}
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{ if or .IsPage .IsSection }}{{ $g := resources.Get "css/guide.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $g.RelPermalink }}" integrity="{{ $g.Data.Integrity }}">{{ end }}
 </head>
 <body>
   <header class="site">

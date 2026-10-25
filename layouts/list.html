@@ -1,9 +1,0 @@
-{{ define "main" }}
-<h1>{{ .Title }}</h1>
-{{ if not .Pages }}<p>Inget publicerat ännu.</p>{{ end }}
-<ul class="list">
-  {{ range .Pages.ByDate.Reverse }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="meta">{{ .Date.Format "2006-01-02" }}</span><br><span class="meta">{{ .Params.description }}</span></li>
-  {{ end }}
-</ul>
-{{ end }}
