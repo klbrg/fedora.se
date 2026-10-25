@@ -1,0 +1,22 @@
+baseURL = 'https://fedora.se/'
+locale = 'sv'
+disableKinds = ['taxonomy', 'term']
+defaultContentLanguage = 'sv'
+disableHugoGeneratorInject = true
+title = 'Sweden Linux User Group'
+# Guider och nyheter är avstängda men ligger kvar på disk
+ignoreFiles = ['/content/guider/', '/content/nyheter/']
+
+[params]
+  description = 'Svensk community för alla som använder Linux, oavsett distribution. Häng med i vår Matrix-chatt, där vi också annonserar träffar och events.'
+  # Matrix-space: Sweden Linux User Group
+  matrixUrl = 'https://matrix.to/#/#linux-se:matrix.org'
+  matrixAlias = '#linux-se:matrix.org'
+  matrixName = 'Sweden Linux User Group (SLUG)'
+
+[outputs]
+  home = ['html']
+  section = ['html']
+
+[markup.highlight]
+  noClasses = false

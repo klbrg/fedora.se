@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="kompass">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <noscript><p><strong>Distro-kompassen kräver JavaScript. Allt sker i din webbläsare, inget skickas någonstans.</strong></p></noscript>
+  <form id="kompass-form" class="kompass-form" hidden></form>
+  <div id="kompass-result" class="kompass-result" aria-live="polite"></div>
+  <div id="kompass-data" data-json="{{ site.Data.distros | jsonify }}" hidden></div>
+  {{ $js := resources.Get "js/kompass.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</article>
+{{ end }}

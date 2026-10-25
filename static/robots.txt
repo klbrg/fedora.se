@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fedora.se/sitemap.xml

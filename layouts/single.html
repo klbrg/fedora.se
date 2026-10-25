@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  <p class="meta">
+    Publicerad {{ .Date.Format "2006-01-02" }}
+    {{ with .Params.updated }} · Uppdaterad {{ time.Format "2006-01-02" . }}{{ end }}
+    {{ with .Params.distro }} · Gäller {{ . }}{{ with $.Params.distroVersion }} {{ . }}{{ end }}{{ end }}
+  </p>
+  {{ .Content }}
+</article>
+{{ end }}

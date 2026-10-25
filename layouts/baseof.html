@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else }}{{ .Title }} – fedora.se{{ end }}</title>
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:site_name" content="fedora.se">
+  <meta property="og:title" content="{{ if .IsHome }}fedora.se – {{ site.Title }}{{ else }}{{ .Title }} – fedora.se{{ end }}">
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ "og.png" | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Blå hatt med gult band på mörk bakgrund">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ if eq .Kind "404" }}<meta name="robots" content="noindex">{{ end }}
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  {{ if .IsHome }}
+  {{ $ld := dict "@context" "https://schema.org" "@graph" (slice
+    (dict "@type" "Organization" "@id" (printf "%s#org" site.Home.Permalink) "name" site.Title "alternateName" "SLUG" "url" site.Home.Permalink "logo" ("logo-512.png" | absURL) "description" site.Params.description)
+    (dict "@type" "WebSite" "@id" (printf "%s#site" site.Home.Permalink) "url" site.Home.Permalink "name" site.Title "inLanguage" "sv" "publisher" (dict "@id" (printf "%s#org" site.Home.Permalink)))
+  ) }}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+  {{ end }}
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/hat.svg" alt="" width="56" height="56"><span class="brand-text">fedora.se</span></a>
+    </div>
+  </header>
+  <main class="wrap">{{ block "main" . }}{{ end }}</main>
+  <footer class="site">
+    <div class="wrap">
+      fedora.se är en oberoende svensk Linux-community för alla distributioner. Sajten är inofficiell och inte ansluten till Fedora Project eller Red Hat.
+      Fedora och Fedora-logotypen är varumärken som tillhör Red Hat, Inc.
+    </div>
+  </footer>
+</body>
+</html>

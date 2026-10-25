@@ -1,0 +1,30 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+<section class="join">
+  <h2>Häng med oss på Matrix</h2>
+  <p><a class="cta" href="{{ site.Params.matrixUrl }}" rel="noopener">Gå med i chatten</a></p>
+  <p class="meta">{{ site.Params.matrixName }} · Adress: <code>{{ site.Params.matrixAlias }}</code></p>
+</section>
+
+<div class="term" aria-hidden="true">
+  <div class="term-head">Every 1,0s: date</div>
+  <div class="term-out" id="term-date">&nbsp;</div>
+</div>
+<script>
+(function () {
+  var el = document.getElementById("term-date");
+  if (!el) return;
+  function fmt(d) {
+    var day = d.toLocaleDateString("sv-SE", { weekday: "short", day: "numeric", month: "short" }).replace(/\./g, "");
+    var time = d.toLocaleTimeString("sv-SE", { hour12: false });
+    var tz = (d.toLocaleTimeString("sv-SE", { timeZoneName: "short" }).split(" ").pop() || "");
+    return day + " " + d.getFullYear() + " " + time + " " + tz;
+  }
+  function tick() { el.textContent = fmt(new Date()); }
+  tick();
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(tick, 1000);
+})();
+</script>
+{{ end }}
