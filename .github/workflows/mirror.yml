@@ -1,0 +1,26 @@
+name: Mirror to Codeberg
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push main to Codeberg
+        env:
+          CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+        run: |
+          if [ -z "$CODEBERG_TOKEN" ]; then
+            echo "CODEBERG_TOKEN saknas, hoppar över spegling"
+            exit 0
+          fi
+          git push --force "https://karlberg:${CODEBERG_TOKEN}@codeberg.org/karlberg/fedora.se.git" HEAD:main
