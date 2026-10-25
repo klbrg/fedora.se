@@ -36,7 +36,7 @@ header.site .brand img { display: block; width: 4.25rem; height: 4.25rem; }
 header.site .brand-text { color: var(--brand); display: flex; flex-direction: column; line-height: 1; }
 header.site .brand-text small { font-size: .8rem; font-weight: 400; letter-spacing: 0; color: var(--muted); margin-top: .35rem; }
 
-footer.site { border-top: 4px solid var(--yellow); margin-top: 4rem; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+footer.site { border-top: 4px solid var(--yellow); margin-top: 4rem; color: var(--muted); font-size: .75rem; line-height: 1.6; }
 footer.site .wrap { padding-block: 1.5rem; }
 
 /* Matrix-rutan: sidans enda uppmaning */
