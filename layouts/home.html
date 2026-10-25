@@ -1,12 +1,13 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ .Content }}
 
-<section class="join">
-  <h2>Häng med oss på Matrix</h2>
+<section class="join" aria-labelledby="join-h">
+  <h2 id="join-h">Häng med oss på Matrix</h2>
   <p><a class="cta" href="{{ site.Params.matrixUrl }}" rel="noopener">Gå med i chatten</a></p>
-  <p class="meta">{{ site.Params.matrixName }} · Adress: <code>{{ site.Params.matrixAlias }}</code></p>
+  <p class="meta"><span>{{ site.Params.matrixName }}</span><span class="join-sep"> · </span><span class="join-addr">Adress: <code>{{ site.Params.matrixAlias }}</code></span></p>
 </section>
+
+{{ .Content }}
 
 <div class="term" aria-hidden="true">
   <div class="term-head">Every 1,0s: date</div>

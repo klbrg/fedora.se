@@ -14,6 +14,7 @@
   <meta property="og:image" content="{{ "og.png" | absURL }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="Blå hatt med gult band på mörk bakgrund">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="{{ .Permalink }}">
@@ -26,13 +27,15 @@
   <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   {{ if .IsHome }}
   {{ $ld := dict "@context" "https://schema.org" "@graph" (slice
-    (dict "@type" "Organization" "@id" (printf "%s#org" site.Home.Permalink) "name" site.Title "alternateName" "SLUG" "url" site.Home.Permalink "logo" ("logo-512.png" | absURL) "description" site.Params.description)
+    (dict "@type" "Organization" "@id" (printf "%s#org" site.Home.Permalink) "name" site.Title "alternateName" "SLUG" "url" site.Home.Permalink "logo" ("logo-512.png" | absURL) "description" site.Params.description "sameAs" (slice site.Params.matrixUrl))
     (dict "@type" "WebSite" "@id" (printf "%s#site" site.Home.Permalink) "url" site.Home.Permalink "name" site.Title "inLanguage" "sv" "publisher" (dict "@id" (printf "%s#org" site.Home.Permalink)))
   ) }}
   <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
   {{ end }}
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ if or .IsPage .IsSection }}{{ $g := resources.Get "css/guide.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $g.RelPermalink }}" integrity="{{ $g.Data.Integrity }}">{{ end }}
 </head>
 <body>
   <header class="site">
