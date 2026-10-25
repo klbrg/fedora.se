@@ -3,14 +3,14 @@ locale = 'sv'
 disableKinds = ['taxonomy', 'term']
 defaultContentLanguage = 'sv'
 disableHugoGeneratorInject = true
-title = 'Sweden Linux User Group'
+title = 'Swedish Linux User Group'
 
 [params]
   description = 'Svensk community för alla som använder Linux, oavsett distribution. Häng med i vår Matrix-chatt, där vi också annonserar träffar och events.'
-  # Matrix-space: Sweden Linux User Group
+  # Matrix-space: Swedish Linux User Group
   matrixUrl = 'https://matrix.to/#/#linux-se:matrix.org'
   matrixAlias = '#linux-se:matrix.org'
-  matrixName = 'Sweden Linux User Group (SLUG)'
+  matrixName = 'Swedish Linux User Group (SLUG)'
 
 [outputs]
   home = ['html']
