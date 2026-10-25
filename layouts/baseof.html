@@ -32,8 +32,8 @@
   ) }}
   <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
   {{ end }}
-  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ $css := resources.Get "css/main.css" | minify }}
+  <style>{{ $css.Content | safeCSS }}</style>
 </head>
 <body>
   <header class="site">
