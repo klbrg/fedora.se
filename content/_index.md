@@ -1,5 +1,5 @@
 ---
-title: Swedish Linux User Group
+title: Linux på svenska
 ---
 
 
